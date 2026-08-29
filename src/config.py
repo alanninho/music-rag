@@ -31,3 +31,15 @@ def get_connection():
 def get_logger(name: str) -> logging.Logger:
     """Return a logger for the given module name."""
     return logging.getLogger(name)
+
+
+from neo4j import GraphDatabase
+
+NEO4J_URI = os.environ.get('NEO4J_URI')
+NEO4J_USER = os.environ.get('NEO4J_USER')
+NEO4J_PASSWORD = os.environ.get('NEO4J_PASSWORD')
+NEO4J_DATABASE = os.environ.get('NEO4J_DATABASE')
+
+def get_neo4j_driver():
+    """Create and return a new Neo4j driver instance."""
+    return GraphDatabase.driver(NEO4J_URI, auth=(NEO4J_USER, NEO4J_PASSWORD))

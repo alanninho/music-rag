@@ -3,14 +3,18 @@ from src.config import get_connection, get_logger
 from src.retrieval import retrieve
 from src.hybrid_retrieval import hybrid_search
 from src.rerank import rerank
+from src.router import route_query
 
+client = ollama.Client(host='http://127.0.0.1:11434')
 
-def generate_answer(query: str, top_k: int=10) -> str:
+def generate_answer(query: str, top_k: int=5) -> str:
     '''
     Retrieve relevant chunks and generate an answer grounded in them.
     '''
-    candidates = hybrid_search(query, top_k)
-    chunks = rerank(query, candidates, top_k=top_k)
+    #candidates = hybrid_search(query, top_k)
+    #chunks = rerank(query, candidates, top_k=top_k)
+    
+    chunks = route_query(query, top_k)
     
     context = ''
     for chunk in chunks:
@@ -25,7 +29,7 @@ def generate_answer(query: str, top_k: int=10) -> str:
     Question:
     {query}'''
     
-    response = ollama.chat(model='llama3.2', messages=[
+    response = client.chat(model='llama3.2', messages=[
     {'role': 'user', 'content': full_prompt}
 ])
     return response['message']['content']
