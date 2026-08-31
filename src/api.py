@@ -20,3 +20,4 @@ def ask(request: AskRequest):
 @app.get('/')
 def root():
     return {'message': 'Music RAG API is running'}
+

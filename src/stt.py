@@ -1,6 +1,8 @@
 import whisper
 import sounddevice as sd
 from scipy.io.wavfile import write
+from src.graph_search import correct_artist_names
+
 
 model = whisper.load_model('base')
 
@@ -27,9 +29,8 @@ def transcribe_audio(audio_path: str) -> str:
     return result['text']
 
 
+
 def record_and_transcribe(duration_seconds: int = 5) -> str:
     audio_path = record_audio(duration_seconds)
-    return transcribe_audio(audio_path)
-
-text = record_and_transcribe(5)
-print(text)
+    raw_text = transcribe_audio(audio_path)
+    return correct_artist_names(raw_text)
