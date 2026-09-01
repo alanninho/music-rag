@@ -4,6 +4,7 @@ from src.retrieval import retrieve
 from src.hybrid_retrieval import hybrid_search
 from src.rerank import rerank
 from src.router import route_query
+from src.groundedness import check_groundedness
 
 client = ollama.Client(host='http://127.0.0.1:11434')
 
@@ -32,4 +33,12 @@ def generate_answer(query: str, top_k: int=5) -> str:
     response = client.chat(model='llama3.2', messages=[
     {'role': 'user', 'content': full_prompt}
 ])
-    return response['message']['content']
+    answer = response['message']['content']
+    
+    groundedness = check_groundedness(answer, context)
+    print(f"DEBUG: is_grounded = {groundedness['is_grounded']}")
+    if not groundedness['is_grounded']:
+        answer += "\n\nNote: this answer may not be fully supported by the retrieved context."
+    print(f"DEBUG: final answer = {answer[-100:]}")
+
+    return answer
