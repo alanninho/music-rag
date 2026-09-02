@@ -16,3 +16,4 @@ scipy
 sounddevice
 kokoro
 soundfile
+slowapi>=0.1.9
