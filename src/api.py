@@ -35,13 +35,14 @@ def verify_api_key(x_api_key: str = Header(...)):
 class AskRequest(BaseModel):
     question: str
     top_k: int = 5
+    session_id: str = "default"
 
 
 @app.post('/ask')
 @limiter.limit("5/minute")
 def ask(request: Request, ask_request: AskRequest, api_key: str = Depends(verify_api_key)):
-    answer = generate_answer(ask_request.question, ask_request.top_k)
-    return {'answer': answer}
+    result = generate_answer(ask_request.question, session_id=ask_request.session_id, top_k=ask_request.top_k)
+    return result  # already has 'answer' and 'sources' keys
 
 @app.get('/')
 def root():

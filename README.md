@@ -64,6 +64,10 @@ graph TD
 - Prometheus + Grafana monitoring, containerized via Docker Compose alongside PostgreSQL and Neo4j
 - CI/CD via GitHub Actions (automated test suite on every push)
 
+**Conversation & chatbot features**
+- Multi-turn conversation memory (session-scoped), with citation/source attribution on every answer
+- Deterministic query rewriting for follow-up questions, after an LLM-based approach was tried and found unreliable for this task with a small local model
+- Reframed low-confidence responses (tentative framing, not just a trailing disclaimer) when groundedness checking flags an answer
 ---
 
 ## Results
@@ -199,6 +203,8 @@ Visit `http://127.0.0.1:8000/docs` for the interactive API (requires an `X-API-K
 - No cloud deployment yet - the system runs fully locally
 - Single-turn only - no conversation memory across requests
 - FastAPI itself is not yet containerized (Postgres, Neo4j, Prometheus, and Grafana are)
+- **LLM-based query rewriting failed for a small local model**: multi-turn conversation follow-ups (e.g. "what about his 90s albums?" after discussing Nas) need pronoun resolution before retrieval, or retrieval fails entirely (tested and confirmed: it pulled unrelated artists and the LLM confidently hallucinated a detailed, mostly-fabricated discography). Two prompting strategies (plain instruction, few-shot example) were tried with `llama3.2` for this rewriting step - both failed to perform the actual pronoun substitution, even with correct conversation history available. This was replaced with a deterministic heuristic: if a follow-up query names no known artist, the most recently discussed artist (from the user's own prior messages only, not the assistant's generated text) is substituted in before retrieval. This works reliably for single-entity conversations but doesn't handle genuinely ambiguous multi-entity follow-ups.
+- **The empty-retrieval fallback trigger is largely non-functional**: an initial fallback design returned a clear "I don't have information about that" message when retrieval returned zero chunks. In practice, this almost never fires - vector/hybrid search always returns the *closest* matches by similarity, even when nothing in the corpus is genuinely relevant (e.g. asking about an artist entirely outside the dataset still retrieved 6 "relevant-looking" Nas chunks). A score-threshold-based trigger (flagging low top-result similarity as effectively "no match," rather than checking for zero results) would be the correct fix, but requires reconciling different score scales across vector, BM25, and graph retrieval paths.
 
 ---
 

@@ -6,41 +6,42 @@ from src.retrieval.rerank import rerank
 from src.retrieval.router import route_query
 from src.generation.groundedness import check_groundedness
 from src.config import groundedness_failures
+from src.generation.memory import get_history, add_to_history
+from src.generation.query_rewriter import rewrite_query_with_history
 
 client = ollama.Client(host='http://127.0.0.1:11434')
 
-def generate_answer(query: str, top_k: int=5) -> str:
-    '''
-    Retrieve relevant chunks and generate an answer grounded in them.
-    '''
-    #candidates = hybrid_search(query, top_k)
-    #chunks = rerank(query, candidates, top_k=top_k)
+
+def generate_answer(query: str, session_id: str = "default", top_k: int = 5) -> dict:
+    rewritten_query = rewrite_query_with_history(query, session_id)
+    chunks = route_query(rewritten_query, top_k=top_k)
     
-    chunks = route_query(query, top_k)
+    if not chunks:
+        answer = "I don't have information about that in my knowledge base. Try asking about a specific 90s hip-hop artist, their albums, or their collaborations."
+        add_to_history(session_id, 'user', query)
+        add_to_history(session_id, 'assistant', answer)
+        return {'answer': answer, 'sources': []}
     
+    history = get_history(session_id)
     context = ''
+    sources = []
     for chunk in chunks:
         context += f"[{chunk['artist']}] {chunk['text']}\n\n\n"
-        
-    full_prompt = f'''
-    Answer the question using the context below. If the context doesn't contain enough information to answer, say so.
+        sources.append({'artist': chunk.get('artist', 'unknown'), 'section': chunk.get('section', 'N/A')})
     
-    Context:
-    {context}
+    messages = [{'role': 'system', 'content': f"Answer using only the context below.\n\nContext:\n{context}"}]
+    messages.extend(history)
+    messages.append({'role': 'user', 'content': query})
     
-    Question:
-    {query}'''
-    
-    response = client.chat(model='llama3.2', messages=[
-    {'role': 'user', 'content': full_prompt}
-])
+    response = client.chat(model='llama3.2', messages=messages)
     answer = response['message']['content']
     
     groundedness = check_groundedness(answer, context)
-    print(f"DEBUG: is_grounded = {groundedness['is_grounded']}")
     if not groundedness['is_grounded']:
-        answer += "\n\nNote: this answer may not be fully supported by the retrieved context."
         groundedness_failures.inc()
-    print(f"DEBUG: final answer = {answer[-100:]}")
-
-    return answer
+        answer = "I found some related information, but I'm not confident enough in the answer to state it as fact. Here's what I found:\n\n" + answer
+    
+    add_to_history(session_id, 'user', query)
+    add_to_history(session_id, 'assistant', answer)
+    
+    return {'answer': answer, 'sources': sources}
