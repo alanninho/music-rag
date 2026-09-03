@@ -12,6 +12,9 @@ import os
 from prometheus_fastapi_instrumentator import Instrumentator
 from prometheus_client import Counter
 
+from fastapi.responses import StreamingResponse
+from src.generation.generate import stream_answer
+
 
 logger = get_logger(__name__)
 
@@ -32,6 +35,8 @@ def verify_api_key(x_api_key: str = Header(...)):
     if x_api_key != API_KEY:
         raise HTTPException(status_code=401, detail="Invalid API key")
 
+
+
 class AskRequest(BaseModel):
     question: str = Field(..., max_length=500)
     top_k: int = 5
@@ -47,3 +52,8 @@ def ask(request: Request, ask_request: AskRequest, api_key: str = Depends(verify
 @app.get('/')
 def root():
     return {'message': 'Music RAG API is running'}
+
+@app.post('/ask-stream')
+@limiter.limit("5/minute")
+def ask_stream(request: Request, ask_request: AskRequest, api_key: str = Depends(verify_api_key)):
+    return StreamingResponse(stream_answer(ask_request.question, ask_request.session_id, ask_request.top_k), media_type="text/plain")

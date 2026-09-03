@@ -32,6 +32,14 @@ services:
     ports:
       - "3000:3000"
 
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
 volumes:
   postgres_data:
   neo4j_data:
+  redis_data:

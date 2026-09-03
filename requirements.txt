@@ -18,3 +18,4 @@ kokoro
 soundfile
 slowapi>=0.1.9
 prometheus-fastapi-instrumentator
+redis

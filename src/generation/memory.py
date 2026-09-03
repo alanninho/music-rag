@@ -1,8 +1,11 @@
 """
-Simple in-memory conversation history storage, keyed by session ID.
+Redis-backed conversation history storage, keyed by session ID.
 """
 
-conversation_store: dict[str, list[dict]] = {}
+import json
+import redis
+
+r = redis.Redis(host='127.0.0.1', port=6379, decode_responses=True)
 
 
 def get_history(session_id: str) -> list[dict]:
@@ -10,13 +13,17 @@ def get_history(session_id: str) -> list[dict]:
     Return the conversation history for a given session, or an empty
     list if no history exists yet.
     """
-    return conversation_store.get(session_id, [])
+    raw = r.get(f"history:{session_id}")
+    if raw is None:
+        return []
+    return json.loads(raw)
 
 
 def add_to_history(session_id: str, role: str, content: str) -> None:
     """
     Append a message to a session's conversation history.
+    Sessions expire after 1 hour of inactivity.
     """
-    if session_id not in conversation_store:
-        conversation_store[session_id] = []
-    conversation_store[session_id].append({'role': role, 'content': content})
+    history = get_history(session_id)
+    history.append({'role': role, 'content': content})
+    r.set(f"history:{session_id}", json.dumps(history), ex=3600)
