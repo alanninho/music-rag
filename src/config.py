@@ -43,3 +43,9 @@ NEO4J_DATABASE = os.environ.get('NEO4J_DATABASE')
 def get_neo4j_driver():
     """Create and return a new Neo4j driver instance."""
     return GraphDatabase.driver(NEO4J_URI, auth=(NEO4J_USER, NEO4J_PASSWORD))
+
+
+# in config.py
+from prometheus_client import Counter
+
+groundedness_failures = Counter('groundedness_check_failures_total', 'Number of answers flagged as ungrounded')

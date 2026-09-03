@@ -9,12 +9,18 @@ from slowapi.errors import RateLimitExceeded
 
 import os
 
+from prometheus_fastapi_instrumentator import Instrumentator
+from prometheus_client import Counter
+
 
 logger = get_logger(__name__)
 
 
 app = FastAPI()
 
+
+
+Instrumentator().instrument(app).expose(app)
 
 limiter = Limiter(key_func=get_remote_address)
 app.state.limiter = limiter

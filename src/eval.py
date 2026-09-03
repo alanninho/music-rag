@@ -3,6 +3,8 @@ from src.hybrid_retrieval import hybrid_search
 from src.rerank import rerank
 from src.metrics import precision_at_k, recall_at_k
 import mlflow
+from src.groundedness import check_groundedness
+
 
 
 golden_questions = [
@@ -72,3 +74,48 @@ def run_eval(golden_questions: list[dict], top_k: int = 5) -> None:
 mlflow.set_tracking_uri("sqlite:///C:/Users/alanm/OneDrive/Documents/DS AI Projects/music-rag/mlflow.db")
 print("MLflow tracking URI:", mlflow.get_tracking_uri())
 run_eval(golden_questions)
+
+groundedness_test_cases = [
+    {
+        "context": "Nas released his debut album Illmatic in 1994.",
+        "answer": "Nas released Illmatic in 1994.",
+        "expected": True  # clearly grounded
+    },
+    {
+        "context": "Nas released his debut album Illmatic in 1994.",
+        "answer": "Nas won a Grammy in 1995.",
+        "expected": False  # clearly ungrounded - not mentioned at all
+    },
+    {
+        "context": "Nas has won one Grammy out of 17 nominations.",
+        "answer": "Nas has won a Grammy award.",
+        "expected": True  # grounded - doesn't claim a specific year
+    },
+    {
+        "context": "Nas has won one Grammy out of 17 nominations.",
+        "answer": "Nas won his Grammy in 1995 for Illmatic.",
+        "expected": False  # ungrounded - invents specifics not in context
+    },
+]
+
+
+def evaluate_groundedness_checker(test_cases: list[dict]) -> float:
+    """
+    Measure how often check_groundedness agrees with expected labels.
+    Returns accuracy (0.0 to 1.0).
+    """
+    correct = 0
+    for case in test_cases:
+        result = check_groundedness(case['answer'], case['context'])
+        if result['is_grounded'] == case['expected']:
+            correct += 1
+        else:
+            print(f"Mismatch: expected {case['expected']}, got {result['is_grounded']}")
+            print(f"  Answer: {case['answer']}")
+            print(f"  Reasoning: {result['explanation']}")
+    
+    accuracy = correct / len(test_cases)
+    print(f"Groundedness checker accuracy: {accuracy:.2%} ({correct}/{len(test_cases)})")
+    return accuracy
+
+print(evaluate_groundedness_checker(groundedness_test_cases))

@@ -8,6 +8,8 @@ from src.config import get_logger
 
 logger = get_logger(__name__)
 
+client = ollama.Client(host='http://127.0.0.1:11434')
+
 
 def check_groundedness(answer: str, context: str) -> dict:
     """
@@ -24,7 +26,11 @@ Answer:
 
 Is this answer fully supported by the context, with no unsupported claims? Respond with exactly one word first (YES or NO), followed by a brief one-sentence explanation.
 """
-    response = ollama.chat(model='llama3.2', messages=[{'role': 'user', 'content': prompt}])
+    response = client.chat(
+    model='llama3.2',
+    messages=[{'role': 'user', 'content': prompt}],
+    options={'temperature': 0}
+)
     verdict_text = response['message']['content']
 
     is_grounded = verdict_text.strip().upper().startswith('YES')
