@@ -1,5 +1,5 @@
 from fastapi import FastAPI, Depends, HTTPException, Header, Request
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from src.generation.generate import generate_answer
 from src.config import get_logger
 
@@ -33,7 +33,7 @@ def verify_api_key(x_api_key: str = Header(...)):
         raise HTTPException(status_code=401, detail="Invalid API key")
 
 class AskRequest(BaseModel):
-    question: str
+    question: str = Field(..., max_length=500)
     top_k: int = 5
     session_id: str = "default"
 
