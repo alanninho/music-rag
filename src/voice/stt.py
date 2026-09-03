@@ -1,8 +1,7 @@
 import whisper
 import sounddevice as sd
 from scipy.io.wavfile import write
-from src.graph_search import correct_artist_names
-
+from src.retrieval.graph_search import correct_artist_names
 
 model = whisper.load_model('base')
 

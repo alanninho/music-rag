@@ -4,9 +4,9 @@ Query routing logic: enriches retrieval with knowledge-graph context
 hybrid+rerank text retrieval.
 """
 
-from src.graph_search import find_mentioned_artists, find_connection_path, get_artist_graph_context
-from src.hybrid_retrieval import hybrid_search
-from src.rerank import rerank
+from src.retrieval.graph_search import find_mentioned_artists, find_connection_path, get_artist_graph_context
+from src.retrieval.hybrid import hybrid_search
+from src.retrieval.rerank import rerank
 from src.config import get_logger
 
 logger = get_logger(__name__)

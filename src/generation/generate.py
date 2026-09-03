@@ -1,10 +1,10 @@
 import ollama
 from src.config import get_connection, get_logger
-from src.retrieval import retrieve
-from src.hybrid_retrieval import hybrid_search
-from src.rerank import rerank
-from src.router import route_query
-from src.groundedness import check_groundedness
+from src.retrieval.vector import retrieve
+from src.retrieval.hybrid import hybrid_search
+from src.retrieval.rerank import rerank
+from src.retrieval.router import route_query
+from src.generation.groundedness import check_groundedness
 from src.config import groundedness_failures
 
 client = ollama.Client(host='http://127.0.0.1:11434')

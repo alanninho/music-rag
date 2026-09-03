@@ -1,6 +1,6 @@
 from src.config import get_logger, get_connection
-from src.retrieval import retrieve
-from src.metrics import reciprocal_rank_fusion
+from src.retrieval.vector import retrieve
+from src.evaluation.metrics import reciprocal_rank_fusion
 from rank_bm25 import BM25Okapi
 
 logger = get_logger(__name__)

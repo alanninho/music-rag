@@ -1,8 +1,8 @@
-from src.hybrid_retrieval import hybrid_search
 from mcp.server.mcpserver import MCPServer
-from src.stt import record_and_transcribe
-from src.tts import text_to_speech
-from src.generation import generate_answer
+from src.retrieval.hybrid import hybrid_search
+from src.voice.stt import record_and_transcribe
+from src.voice.tts import text_to_speech
+from src.generation.generate import generate_answer
 
 mcp = MCPServer("music-rag-server")
 

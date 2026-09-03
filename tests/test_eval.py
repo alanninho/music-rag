@@ -1,4 +1,4 @@
-from src.metrics import precision_at_k, recall_at_k, reciprocal_rank_fusion
+from src.evaluation.metrics import precision_at_k, recall_at_k, reciprocal_rank_fusion
 
 
 def test_precision_at_k_full_overlap():

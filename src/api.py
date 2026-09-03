@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Depends, HTTPException, Header, Request
 from pydantic import BaseModel
-from src.generation import generate_answer
+from src.generation.generate import generate_answer
 from src.config import get_logger
 
 from slowapi import Limiter, _rate_limit_exceeded_handler
