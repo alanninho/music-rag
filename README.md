@@ -1,6 +1,6 @@
 # Music RAG: A Hybrid GraphRAG System for 90s Hip-Hop
 
-A full-stack Retrieval-Augmented Generation system combining vector search, sparse search, reranking, and knowledge-graph traversal to answer questions about 90s hip-hop artists — grounded in real MusicBrainz and Wikipedia data, served locally end-to-end.
+A full-stack Retrieval-Augmented Generation system combining vector search, sparse search, reranking, and knowledge-graph traversal to answer questions about 90s hip-hop artists - grounded in real MusicBrainz and Wikipedia data, served locally end-to-end.
 
 Built as a portfolio project to demonstrate production-oriented RAG engineering: not just "call an embedding model," but chunking strategy, retrieval evaluation, hybrid fusion, graph-based retrieval, voice I/O, and CI/CD.
 
@@ -45,7 +45,7 @@ graph TD
 
 **Knowledge graph**
 - MusicBrainz artist relationships (collaborations, band membership, family ties) loaded into Neo4j as a real graph
-- A query router that detects relationship-style questions and answers them via Cypher graph traversal instead of embedding search — directly addressing a measured weakness of pure vector retrieval on relationship queries
+- A query router that detects relationship-style questions and answers them via Cypher graph traversal instead of embedding search - directly addressing a measured weakness of pure vector retrieval on relationship queries
 
 **LLM & voice**
 - Local LLM generation via Ollama
@@ -72,11 +72,11 @@ Evaluated across a hand-built golden query set (precision@5 / recall@5, averaged
 
 ![Ablation results](scripts/ablation_chart.png)
 
-**Key finding**: hybrid search improved retrieval on proper-noun-heavy queries (e.g. "Illmatic") but underperformed pure vector search on broad, low-keyword-specificity queries (e.g. "tell me about X's career") — traced to BM25 introducing noise when no distinctive term anchors the query. Reranking consistently matched-or-beat both baselines, making it the most reliable single addition. Full investigation, including root-causing a specific retrieval failure down to embedding behavior, is documented in the project's development history.
+**Key finding**: hybrid search improved retrieval on proper-noun-heavy queries (e.g. "Illmatic") but underperformed pure vector search on broad, low-keyword-specificity queries (e.g. "tell me about X's career") - traced to BM25 introducing noise when no distinctive term anchors the query. Reranking consistently matched-or-beat both baselines, making it the most reliable single addition. Full investigation, including root-causing a specific retrieval failure down to embedding behavior, is documented in the project's development history.
 
 ### Embedding space
 
-A UMAP projection of chunk embeddings, colored by artist, shows clear semantic clustering — artists group tightly by shared vocabulary, era, and style (e.g. Wu-Tang Clan and its members cluster together; Lauryn Hill, stylistically distinct from pure hip-hop, sits well separated from the rest).
+A UMAP projection of chunk embeddings, colored by artist, shows clear semantic clustering - artists group tightly by shared vocabulary, era, and style (e.g. Wu-Tang Clan and its members cluster together; Lauryn Hill, stylistically distinct from pure hip-hop, sits well separated from the rest).
 
 ![Embedding visualization](scripts/embedding_visualization.png)
 
@@ -165,15 +165,16 @@ Visit `http://127.0.0.1:8000/docs` for the interactive API.
 
 ## Known limitations & next steps
 
-- Hybrid search's BM25 component can hurt retrieval on broad, non-keyword-anchored queries — a query-type-aware weighting scheme is a natural next step
+- Hybrid search's BM25 component can hurt retrieval on broad, non-keyword-anchored queries - a query-type-aware weighting scheme is a natural next step
 - Entity matching for graph queries uses substring matching against known artists; upgrading to NER (e.g. spaCy) would generalize better to open-vocabulary or misspelled mentions
 - Only Wikipedia data is currently embedded into pgvector; MusicBrainz's structured metadata (tags, relations, release history) is loaded into Neo4j but not yet embedded as text
 - No containerization yet (Docker Compose for Postgres + Neo4j + the API is planned)
-- Single-turn only — no conversation memory across requests
+- Single-turn only - no conversation memory across requests
 - No groundedness/hallucination check beyond prompt instruction
+- **LLM-as-judge groundedness checking has real limitations**: a small labeled evaluation (4 test cases) found the groundedness checker only agreed with expected verdicts 50% of the time. The failure mode is notable - the judge model sometimes hallucinates its own "supporting" facts not present in the context (e.g. confidently stating a specific award year that was never mentioned), rather than strictly evaluating only the literal text provided. This is a known, documented failure mode of LLM-as-judge approaches: the same model that can hallucinate as a generator can also hallucinate as a judge. A stricter prompt explicitly instructing the model to ignore outside knowledge is a natural next step, along with expanding the labeled test set for more reliable calibration.
 
 ---
 
 ## Why this domain
 
-Built on 90s hip-hop rather than a generic corpus specifically to stress-test retrieval on proper-noun-heavy, relationship-dense data — album titles, collaborations, and band memberships are exactly the kind of content where naive vector search struggles and where hybrid search and graph retrieval earn their keep.
+Built on 90s hip-hop rather than a generic corpus specifically to stress-test retrieval on proper-noun-heavy, relationship-dense data - album titles, collaborations, and band memberships are exactly the kind of content where naive vector search struggles and where hybrid search and graph retrieval earn their keep.
