@@ -81,6 +81,7 @@ graph TD
 - CLIP embeddings (`clip-ViT-B-32`) storing images in a shared text-image vector space, alongside text embeddings in a separate pgvector table
 - Cross-modal retrieval in both directions: text-to-image search (e.g. "dark and gritty album cover" retrieves visually matching covers) and image-to-image similarity search
 - Exposed via both a dedicated FastAPI endpoint and an MCP tool, with the same security posture (auth, rate limiting, input validation) as the rest of the API
+- The MCP tool returns genuine MCP `Image` content blocks (base64-encoded, MIME-typed), rendered inline by compatible clients - not just a URL string - validated via the MCP Inspector
 ---
 
 ## Results
