@@ -3,9 +3,9 @@ from pprint import pprint # useful to print dict in a beautiful way in the termi
 from pathlib import Path
 import logging
 
-DATA_DIR = Path(__file__).parent.parent / 'data'
+DATA_DIR = Path(__file__).parent.parent.parent / 'data'
 RAW_PATH = DATA_DIR / 'raw' / 'musicbrainz_artists.json'
-PROCESSED_PATH = DATA_DIR / 'processed' / 'cleaned_artists.json'
+PROCESSED_PATH = DATA_DIR / 'processed' / 'mb_cleaned_artists.json'
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 logger = logging.getLogger(__name__)
@@ -31,6 +31,7 @@ def parse_artist(raw_artist : dict) -> dict:
             for r in raw_artist['relations']],       # list of cleaned relation dicts (type, artist name, begin, end)
         'release_groups': [
             {
+                'mbid': r['id'],
                 'title' : r['title'],
                 'first-release-date' : r['first-release-date'],
                 'tags' : [t['name'] for t in r['tags'] if t['count'] >= 3]

@@ -1,0 +1,290 @@
+[
+  {
+    "artist": "Nas",
+    "album": "Illmatic",
+    "mbid": "28298e2c-4d70-3eed-a0f5-a3280c662b3d",
+    "cover_url": "http://coverartarchive.org/release/f00af81c-9249-49d0-b3f5-8b6725bd1900/28008351580.jpg"
+  },
+  {
+    "artist": "The Notorious B.I.G.",
+    "album": "Ready to Die",
+    "mbid": "5afcfeac-118a-35e6-af0d-35ec9003354d",
+    "cover_url": "http://coverartarchive.org/release/c39794bb-1886-42d9-8a8e-a1be8ae8d5fa/5882590146.jpg"
+  },
+  {
+    "artist": "Tupac Shakur",
+    "album": "East & West Coast Rival",
+    "mbid": "c107f6cf-70a9-4a38-9254-e842c640529f",
+    "cover_url": "https://coverartarchive.org/release/73c7d2a7-1018-443a-878e-cb57e105c0f4/39886859063.jpg"
+  },
+  {
+    "artist": "Wu\u2010Tang Clan",
+    "album": "Enter the Wu\u2010Tang (36 Chambers)",
+    "mbid": "610fb60f-900a-3c42-ac7d-f6b6aa8035f9",
+    "cover_url": "http://coverartarchive.org/release/2a059e43-e66c-4d6d-9a4f-dea9a6919061/10112836421.jpg"
+  },
+  {
+    "artist": "A Tribe Called Quest",
+    "album": "Description of a Fool",
+    "mbid": "c545187b-6a4d-4430-baf9-153000d78609",
+    "cover_url": "http://coverartarchive.org/release/ce8bcb51-363c-4bfe-9d11-719643ecf114/35544285507.png"
+  },
+  {
+    "artist": "Dr. Dre",
+    "album": "\u201985 Live!",
+    "mbid": "81a2877b-1a85-4d60-b9c6-0fb26772677f",
+    "cover_url": "https://coverartarchive.org/release/97df1a4e-70f8-4d23-8629-2cefc1af9d11/45683748723.jpg"
+  },
+  {
+    "artist": "Snoop Dogg",
+    "album": "Doggystyle",
+    "mbid": "649762c9-8785-3d9c-803d-2f0496f168e5",
+    "cover_url": "http://coverartarchive.org/release/d7a96c61-531f-4d2f-9873-4acaf3ba4ce0/10324697204.jpg"
+  },
+  {
+    "artist": "JA\u0178-Z",
+    "album": "Reasonable Doubt",
+    "mbid": "a7f852ba-08bc-36f1-92f3-4dc127f4b70a",
+    "cover_url": "https://coverartarchive.org/release/37c0a6b5-f723-4e70-92b8-805a569bc436/28645054139.jpg"
+  },
+  {
+    "artist": "OutKast",
+    "album": "Player\u2019s Ball",
+    "mbid": "ab24f50f-212c-3271-81ee-42bd5f4d4239",
+    "cover_url": "https://coverartarchive.org/release/8fed1f0a-5e44-407f-9866-dfa177498a9a/40691551145.jpg"
+  },
+  {
+    "artist": "Mobb Deep",
+    "album": "Juvenile Hell",
+    "mbid": "5322796a-a67c-3254-b478-316295b5dcbe",
+    "cover_url": "http://coverartarchive.org/release/1a822253-9b26-48f1-8e81-5b77b66a5ce3/19718119542.jpg"
+  },
+  {
+    "artist": "Gang Starr",
+    "album": "Believe Dat",
+    "mbid": "186b89ee-8b42-45ea-8477-88467c72a582",
+    "cover_url": "http://coverartarchive.org/release/5f403eb4-b13e-4285-8fc5-cd349122e88b/1876855358.jpg"
+  },
+  {
+    "artist": "Public Enemy",
+    "album": "Yo! Bum Rush the Show",
+    "mbid": "10022c07-26de-3ae2-8283-7433958a8399",
+    "cover_url": "http://coverartarchive.org/release/87620107-de37-4860-bb0a-077d39a61c22/14748992461.jpg"
+  },
+  {
+    "artist": "De La Soul",
+    "album": "3 Feet High and Rising",
+    "mbid": "5243f39c-c344-3989-a0f6-2a2f75a9d827",
+    "cover_url": "http://coverartarchive.org/release/21662373-c274-451d-a37b-32f0ab1439b6/24983921456.jpg"
+  },
+  {
+    "artist": "Cypress Hill",
+    "album": "Cypress Hill",
+    "mbid": "763b913e-e9b1-3a58-9725-291239e88d79",
+    "cover_url": "http://coverartarchive.org/release/5cf63bca-a3b2-3694-ad13-900809e41367/8769285126.jpg"
+  },
+  {
+    "artist": "Ice Cube",
+    "album": "AmeriKKKa\u2019s Most Wanted",
+    "mbid": "1112c426-203d-48bc-b556-071772ed7c95",
+    "cover_url": "http://coverartarchive.org/release/9f1faaa8-1e96-4c49-ad2c-c90f1edbdc72/37056141109.jpg"
+  },
+  {
+    "artist": "Redman",
+    "album": "Blow Your Mind",
+    "mbid": "c4a5b6c2-5c58-4002-9c8e-106d244cfde7",
+    "cover_url": "http://coverartarchive.org/release/2e737b25-29b8-4d6b-bb57-4549a747d988/34108240663.jpg"
+  },
+  {
+    "artist": "Method Man",
+    "album": "Bring the Pain",
+    "mbid": "c2b67c08-bb21-469b-97a2-0dad25f8059e",
+    "cover_url": "https://coverartarchive.org/release/957f3355-3802-43b7-aa9f-ab57d36e2ee0/45558297310.jpg"
+  },
+  {
+    "artist": "Big L",
+    "album": "MVP",
+    "mbid": "1b9249cc-8b87-3881-a0b0-59a7562a2bf2",
+    "cover_url": "https://coverartarchive.org/release/744aaa94-1052-4b66-8452-0aa903dc3930/43173708170.jpg"
+  },
+  {
+    "artist": "Common",
+    "album": "Can I Borrow a Dollar?",
+    "mbid": "71f9cf74-fdf9-3c14-8597-9e89eefbb963",
+    "cover_url": "http://coverartarchive.org/release/59fb036a-930c-41bf-a238-a06912fa6bcd/17702576266.jpg"
+  },
+  {
+    "artist": "The Pharcyde",
+    "album": "Bizarre Ride II the Pharcyde",
+    "mbid": "c799ef0c-f038-364b-972b-51f52d794781",
+    "cover_url": "http://coverartarchive.org/release/1c6f2a35-4288-4f5d-9eec-97ca32e2a226/32304157771.jpg"
+  },
+  {
+    "artist": "Bone Thugs\u2010n\u2010Harmony",
+    "album": "Faces of Death",
+    "mbid": "8569bdc7-8a55-3225-8916-167b5b33d293",
+    "cover_url": "http://coverartarchive.org/release/54a5c00c-fa04-310d-b417-e4b8a8742765/29540764260.jpg"
+  },
+  {
+    "artist": "Warren G",
+    "album": "Regulate",
+    "mbid": "44a050fd-a335-3297-bdd2-8e2222805ef9",
+    "cover_url": "http://coverartarchive.org/release/87f01f4c-eb7e-411a-b810-31cbeda78eb5/22730361939.jpg"
+  },
+  {
+    "artist": "Ms. Lauryn Hill",
+    "album": "The Sweetest Thing",
+    "mbid": "9b765467-f3a9-4ac9-8241-b47fd9eae78c",
+    "cover_url": "https://coverartarchive.org/release/387957b3-ab60-497f-9a67-81647eb8b71e/36916364395.jpg"
+  },
+  {
+    "artist": "Fugees",
+    "album": "Nappy Heads",
+    "mbid": "d5defb40-a469-431a-b0cd-9cfd579d577a",
+    "cover_url": "http://coverartarchive.org/release/e88d0484-a488-4848-a789-d0b9da38cce5/13954486548.jpg"
+  },
+  {
+    "artist": "Missy Elliott",
+    "album": "Not Tonight",
+    "mbid": "770b6b63-0291-410b-9859-1583524499bf",
+    "cover_url": "https://coverartarchive.org/release/5f7b1a9d-4724-4bff-a339-bc7bf7716511/22169198147.jpg"
+  },
+  {
+    "artist": "Busta Rhymes",
+    "album": "Flipmode Remixes",
+    "mbid": "8dbea25a-b82e-399e-a564-0a6366aab32c",
+    "cover_url": "http://coverartarchive.org/release/d2222818-5381-4629-9206-48b85212b076/12643683744.jpg"
+  },
+  {
+    "artist": "Beastie Boys",
+    "album": "Polly Wog Stew EP",
+    "mbid": "c9361448-e88b-3fe1-bbf9-346e409e298e",
+    "cover_url": "http://coverartarchive.org/release/95c2de69-1867-4c30-a1be-bac6a85acb16/8762640229.jpg"
+  },
+  {
+    "artist": "MF DOOM",
+    "album": "Dead Bent / Gas Drawls / Hey!",
+    "mbid": "d310a2ce-ec1b-3eca-b300-83de86df964d",
+    "cover_url": "http://coverartarchive.org/release/35313ab5-5ab1-4c19-8b42-bd47fa21ff0f/26326077778.jpg"
+  },
+  {
+    "artist": "KRS\u2010One",
+    "album": "Return of the Boom Bap",
+    "mbid": "a03a1ce3-3e3e-31b1-92e5-9f142ba2ad0c",
+    "cover_url": "http://coverartarchive.org/release/7d72a89d-8a2b-45a1-b3f9-3f5c216cce2a/30499105769.jpg"
+  },
+  {
+    "artist": "Eric B. & Rakim",
+    "album": "Eric B. Is President / My Melody",
+    "mbid": "b37ca83f-8b2d-4b59-9458-a47db57d1d9c",
+    "cover_url": "http://coverartarchive.org/release/6959c107-f0fd-4563-abb7-49272ec364cd/18396650925.jpg"
+  },
+  {
+    "artist": "Digable Planets",
+    "album": "Rebirth of Slick (Cool Like Dat)",
+    "mbid": "f4f83793-ec5f-3ba2-b775-cfed3726e9c4",
+    "cover_url": "http://coverartarchive.org/release/67d1fb00-cb9a-4327-bd91-4fe1eb215ff3/9285178121.jpg"
+  },
+  {
+    "artist": "Souls of Mischief",
+    "album": "93 \u2019til Infinity",
+    "mbid": "1187d51f-81b4-4b79-815d-524bf7524fe0",
+    "cover_url": "https://coverartarchive.org/release/78b35667-27da-4876-b542-edd34ac70257/44625916003.jpg"
+  },
+  {
+    "artist": "Jeru the Damaja",
+    "album": "Come Clean",
+    "mbid": "c09eed2a-ab71-46b6-ad21-fe6302a3cde8",
+    "cover_url": "http://coverartarchive.org/release/d6ec17db-ff26-4c25-9119-fb5966ea1bca/18396862764.jpg"
+  },
+  {
+    "artist": "GZA/Genius",
+    "album": "Words From the Genius",
+    "mbid": "d721f6d6-875d-4a2e-aef2-647a537b5cd8",
+    "cover_url": "http://coverartarchive.org/release/1d8f38a9-624f-4593-b63c-a8328880480a/14282558267.jpg"
+  },
+  {
+    "artist": "Raekwon",
+    "album": "Only Built 4 Cuban Linx\u2026",
+    "mbid": "ab981b48-9a7b-34c4-b46a-f6266317ce7c",
+    "cover_url": "http://coverartarchive.org/release/876f4c16-f0e1-40db-8586-87884d49b70d/9706279036.jpg"
+  },
+  {
+    "artist": "Ghostface Killah",
+    "album": "Ironman",
+    "mbid": "97173ef6-fd21-3d0a-80d3-c8c79fb97b17",
+    "cover_url": "http://coverartarchive.org/release/d07c5ce9-7091-4f1c-b78c-ef56a7371598/4437137920.jpg"
+  },
+  {
+    "artist": "Ol\u2019 Dirty Bastard",
+    "album": "Return to the 36 Chambers: The Dirty Version Instrumentals",
+    "mbid": "4fdc1e65-2d8e-409a-a764-00e50cc70627",
+    "cover_url": "https://coverartarchive.org/release/7225c89d-c5ec-4843-b610-b009cc7a7678/37739132899.jpg"
+  },
+  {
+    "artist": "Big Pun",
+    "album": "Off the Books",
+    "mbid": "b986589b-2d4d-429c-a715-bfba251668fe",
+    "cover_url": "http://coverartarchive.org/release/eae43596-1f04-4ac1-877d-967038780d02/26091357298.jpg"
+  },
+  {
+    "artist": "DMX",
+    "album": "It\u2019s Dark and Hell Is Hot",
+    "mbid": "209b96ad-1846-34ff-ac3c-871f2e633d80",
+    "cover_url": "http://coverartarchive.org/release/cfca57c0-eac4-4d85-9a3f-e19e05e78aed/29049611396.jpg"
+  },
+  {
+    "artist": "Master P",
+    "album": "Get Away Clean",
+    "mbid": "610cbe73-8d17-35ba-bb61-066cfb9cbb10",
+    "cover_url": "http://coverartarchive.org/release/16f44ce3-2d4a-4048-a0b8-a5b56a5f58bc/15594698486.jpg"
+  },
+  {
+    "artist": "UGK",
+    "album": "The Southern Way",
+    "mbid": "6077c6fe-7976-328d-a92a-e27ea3923cbf",
+    "cover_url": "https://coverartarchive.org/release/5cf111b3-71d0-422d-8fc5-370fc87b46c8/21308167846.jpg"
+  },
+  {
+    "artist": "Camp Lo",
+    "album": "Luchini (a.k.a. This Is It)",
+    "mbid": "8f9da507-9d9f-4999-abad-c7d60cba9c59",
+    "cover_url": "https://coverartarchive.org/release/8e1c8836-c63a-4094-bfb0-e8c776d774d7/43305882317.jpg"
+  },
+  {
+    "artist": "Blackstreet",
+    "album": "Baby Be Mine",
+    "mbid": "8141168b-a2ac-462a-9b80-2419dcb0cc75",
+    "cover_url": "https://coverartarchive.org/release/707b9d4d-8a7a-4210-8434-a4201aab02cf/42853258640.jpg"
+  },
+  {
+    "artist": "Naughty by Nature",
+    "album": "Independent Leaders",
+    "mbid": "72e3d65d-5666-47da-bd58-c11038ae9f2d",
+    "cover_url": "http://coverartarchive.org/release/0250c87e-4dd8-4a5c-83ee-aadeb95aae3e/18877450795.jpg"
+  },
+  {
+    "artist": "Salt\u2010N\u2010Pepa",
+    "album": "Hot, Cool & Vicious",
+    "mbid": "064a787b-9619-3b66-b5f6-606396df0354",
+    "cover_url": "http://coverartarchive.org/release/585a9ddd-3b13-30da-96fc-71362598ee86/1959186960.jpg"
+  },
+  {
+    "artist": "Queen Latifah",
+    "album": "Ladies First",
+    "mbid": "087229dd-0400-4543-a749-1d673090812e",
+    "cover_url": "https://coverartarchive.org/release/ebc59252-35f5-4730-8226-514fee77918f/44513755979.jpg"
+  },
+  {
+    "artist": "MC Lyte",
+    "album": "I Want Your (Hands on Me)",
+    "mbid": "4bda123c-3130-379d-9f89-92098a9e54bc",
+    "cover_url": "https://coverartarchive.org/release/c8c80f4b-f194-48a7-89bd-a3ac708b16b8/10083965059.jpg"
+  },
+  {
+    "artist": "Slick Rick",
+    "album": "The Great Adventures of Slick Rick",
+    "mbid": "5e1625ea-ae7a-3e8d-b77f-54f83be2c2e1",
+    "cover_url": "http://coverartarchive.org/release/44eb139f-abd1-4c92-8b2d-29b416c0315b/2179533989.jpg"
+  }
+]

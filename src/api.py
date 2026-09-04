@@ -15,6 +15,8 @@ from prometheus_client import Counter
 from fastapi.responses import StreamingResponse
 from src.generation.generate import stream_answer
 
+from src.retrieval.image_search import search_covers_by_text
+
 
 logger = get_logger(__name__)
 
@@ -57,3 +59,16 @@ def root():
 @limiter.limit("5/minute")
 def ask_stream(request: Request, ask_request: AskRequest, api_key: str = Depends(verify_api_key)):
     return StreamingResponse(stream_answer(ask_request.question, ask_request.session_id, ask_request.top_k), media_type="text/plain")
+
+
+
+class ImageSearchRequest(BaseModel):
+    description: str = Field(..., max_length=200)
+    top_k: int = 5
+
+
+@app.post('/search-covers')
+@limiter.limit("5/minute")
+def search_covers(request: Request, search_request: ImageSearchRequest, api_key: str = Depends(verify_api_key)):
+    results = search_covers_by_text(search_request.description, search_request.top_k)
+    return {'results': results}

@@ -75,6 +75,12 @@ graph TD
 - Multi-turn conversation memory (session-scoped), with citation/source attribution on every answer
 - Deterministic query rewriting for follow-up questions, after an LLM-based approach was tried and found unreliable for this task with a small local model
 - Reframed low-confidence responses (tentative framing, not just a trailing disclaimer) when groundedness checking flags an answer
+
+**Multimodal (image) retrieval**
+- Album cover art fetched from Cover Art Archive for 47 artists' flagship albums
+- CLIP embeddings (`clip-ViT-B-32`) storing images in a shared text-image vector space, alongside text embeddings in a separate pgvector table
+- Cross-modal retrieval in both directions: text-to-image search (e.g. "dark and gritty album cover" retrieves visually matching covers) and image-to-image similarity search
+- Exposed via both a dedicated FastAPI endpoint and an MCP tool, with the same security posture (auth, rate limiting, input validation) as the rest of the API
 ---
 
 ## Results

@@ -3,6 +3,8 @@ from src.retrieval.hybrid import hybrid_search
 from src.voice.stt import record_and_transcribe
 from src.voice.tts import text_to_speech
 from src.generation.generate import generate_answer
+from src.retrieval.image_search import search_covers_by_text
+
 
 mcp = MCPServer("music-rag-server")
 
@@ -38,6 +40,18 @@ def speak_answer(text: str) -> str:
 @mcp.tool()
 def get_answer(query: str):
     return generate_answer(query)
+
+
+
+@mcp.tool()
+def find_similar_covers(description: str, top_k: int = 5) -> str:
+    """
+    Find album covers visually similar to a text description
+    (e.g. 'dark and gritty', 'colorful and vibrant') using CLIP
+    cross-modal search.
+    """
+    results = search_covers_by_text(description, top_k=top_k)
+    return "\n".join(f"{r['artist']} - {r['album']} ({r['cover_url']})" for r in results)
 
 if __name__ == "__main__":
     mcp.run()
